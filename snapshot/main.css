@@ -2,10 +2,19 @@
     text-align: center;
     margin: 20px;
     padding: 45px;
+    padding-right: 1.4%;
     display: inline-block;
-    height: 300px;
-    width: 300px;
+    height: 160px;
+    width: 290px;
     background-color: white;
+    background-image: url("logo3.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-x: -1px;
+    background-position-y: -1px;
+    padding-top: 84px;
+    border: 3px solid lightblue;
+    border-radius: 15%;
 }
 body {
     background-image: url("kbtu.jpg");
@@ -30,22 +39,33 @@ body {
 }
 #login-box form button{
     margin-top: 20px;
-    border: 1px solid red;
+    border: 1px solid lightsteelblue;
     height: 30px;
     width: 200px;
-    background-color: darkorange;
+    background-color: darkblue;
     color: white;
-    border-radius: 3px;
+    border-radius: 12px;
     font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
 }
 #lgb {
     text-align: right;
 }
 body .links{
-    margin: 18px;
+    float: right;
+    margin: 20px;
+    width: 313px;
+    background-color: #ffffff;
     margin-top: 12px;
-    padding-right: 5%;
+    padding-right: 5%;  
+    text-decoration-style: solid;
+    border: 3px solid lightblue;
+    height: 80px;
+    padding-top: 7px;
+    padding-left: 1.15%;
+    padding-right: 1.75%;
     text-align: center;
-    text-decoration-color: blue;
-    font-style: oblique;
+    padding-bottom: 7px;
+    font-family: "Times New Roman", Times, serif;
+    border-radius: 500px;
 }
