@@ -1,0 +1,51 @@
+* {
+    padding:0px;
+    margin:0px;
+}
+
+header {
+    background-color: #ff6f61;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 20px;
+    padding-left: 3%;
+    padding-top: 2.6%;
+}
+
+@font-face {
+	font-family: '33535gillsansmt';
+	src: url('../fonts/33535gillsansmt.eot');
+	src: local('33535gillsansmt'), url('../fonts/33535gillsansmt.woff') format('woff'), url('./33535gillsansmt.ttf') format('truetype');
+}
+
+.fontsforweb_fontid_1416 {
+	font-family: '33535gillsansmt' !important;
+}
+
+header a h1{
+    
+    font-size: 37px;
+	font-family: '33535gillsansmt';
+}
+
+
+
+header h1 {
+    
+    margin-top: -40px;
+    font-style: bold;
+    font-size: 20px;
+}
+header .doptext {
+    font-weight: 600;
+    font-size: 20px;
+	font-family: '33535gillsansmt';
+     float: right;
+    margin-top: -10px;
+    margin-right: 30px; 
+    
+    
+}
+header .doptext a {
+    padding-right: 10px;
+    padding-left: 10px;
+}
