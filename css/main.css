@@ -26,13 +26,13 @@
     margin: 5px 0px;
 }
 #login-box form button{
+    font-size: 18px;
     margin-top: 20px;
     border: 0;
     height: 30px;
     width: 200px;
     background-color:  #262626 ;
     color: white;
-    font-size: 15px;
 }
 #login-box a {
     
@@ -54,6 +54,13 @@
 
 .fontsforweb_fontid_1416 {
 	font-family: '33535gillsansmt' !important;
+}
+
+#login-box button:hover {
+    font-size: 22px;
+    /* background-color: white; 
+    color: black; */
+    cursor: pointer;
 }
 
 

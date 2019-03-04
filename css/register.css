@@ -29,6 +29,11 @@ body form button{
     height: 30px;
     width: 270px;
 }
+body form button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
 
 body .forma {
     padding: 40px;
