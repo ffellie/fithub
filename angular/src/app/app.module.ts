@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NewsComponent } from './components/news/news.component';
 import { InfoComponent } from './components/info/info.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { ClassComponent } from './components/class/class.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthComponent } from './components/auth/auth.component';
     FooterComponent,
     NewsComponent,
     InfoComponent,
-    AuthComponent
+    AuthComponent,
+    ClassComponent
   ],
   imports: [
     BrowserModule,
