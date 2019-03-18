@@ -1,4 +1,4 @@
-body .fullbody {
+.fullbody {
     margin-top: 20px;
     padding-left: 2%;
     background-color: antiquewhite;
@@ -14,7 +14,7 @@ h1 {
     font-style: bold;
     font-size: 40px;
 }
-body .links {
+.links {
     padding: 10px;
     margin: 10px;
     margin-top: 20px;
@@ -27,7 +27,7 @@ body .links {
 }
 
 
-body .files {
+.files {
     padding: 10px;
     margin: 10px;
     margin-top: 20px;
@@ -39,7 +39,7 @@ body .files {
     padding-bottom: 1.5%;
 }
 
-body .filename {
+.filename {
     margin: 4px;
     padding: 4px;
 }
