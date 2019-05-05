@@ -44,3 +44,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+bin/                
+include/            
+lib/                
+.idea/
+pip-selfcheck.json
+package-lock.json
