@@ -1,3 +1,6 @@
 from django.contrib import admin
+from api.models import Course, Event, Lecture
 
-# Register your models here.
+admin.site.register(Course)
+admin.site.register(Event)
+admin.site.register(Lecture)

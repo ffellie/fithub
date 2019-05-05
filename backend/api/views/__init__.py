@@ -1,0 +1,1 @@
+from api.views.model_views import CourseDetail, CourseList, LectureList
