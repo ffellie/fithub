@@ -3,13 +3,13 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from api.models import Course, Lecture
-from api.serializers import CourseSerializer, LectureSerializer
+from api.serializers import CourseSerializer, LectureSerializer, LessonSerializer
 
 
 class CourseList(APIView):
     def get(self, request):
-        categories = Course.objects.all()
-        serializer = CourseSerializer(categories, many=True)
+        courses = Course.objects.all()
+        serializer = CourseSerializer(courses, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -53,3 +53,26 @@ class LectureList(APIView):
         lectures = course.lecture_set.all()
         serializer = LectureSerializer(lectures, many=True)
         return Response(serializer.data)
+    def post(self, request,pk):
+        serializer= LectureSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+class LessonList(APIView):
+    def get(self,request,pk):
+        course = Course.objects.get(id=pk)
+        lessons = course.lesson_set.all()
+        serializer = LessonSerializer(lessons, many=True)
+        return Response(serializer.data)
+    def post(self, request):
+        serializer = LessonSerializer(data= request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+            

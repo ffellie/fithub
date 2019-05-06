@@ -1,27 +1,29 @@
 <div class="mainp">
   <div class="fullbody">
-  <h1 class="subjects">
-      Calculus II
-  </h1>
+  <div class="subjects">
+      <ul *ngFor="let course of courses">
+        <h2>Name: {{course.name}}</h2>
+        <br>
+        Description: {{course.description}}
+        <br>
+        <!-- <span style="color: red" > Удалить</span>
+        <span style="color: green" > Изменить</span> -->
+
+      </ul>
+    </div>
+
+
+
+
+
+
+
+
+
   <div class="rootpage">
       <div class="links">
-          <h2>Teacher's links:</h2>
-          <div class="piazza">
-          <p><a href="">Class in Piazza.</a> Access code:</p>
-          </div>
-          <a href="">GoogleDocs for marks.</a><br>
-          <p>Email: <a href="">Email example.</a></p>
       </div>
-      <div class="files">
-              <h2>Teacher's files:</h2>
-              <div class="filename">
-                  <p>file1</p><br>
-                  <p>file2</p><br>
-                  <p>file3</p><br>
-                  <p>file4</p><br>
-                  <p>file4</p>
-                  </div>
-              </div>
-          </div>
-      </div>
+      
   </div>
+
+</div>
