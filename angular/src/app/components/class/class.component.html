@@ -1,24 +1,66 @@
 <div class="mainp">
   <div class="fullbody">
   <div class="subjects">
-      <ul *ngFor="let course of courses">
+
+    
+      <!-- <ul *ngFor="let course of courses">
         <h2>Name: {{course.name}}</h2>
         <br>
         Description: {{course.description}}
         <br>
-        <!-- <span style="color: red" > Удалить</span>
-        <span style="color: green" > Изменить</span> -->
+        <span style="color: red" > Удалить</span>
+        <span style="color: green" > Изменить</span>
 
-      </ul>
+      </ul> -->
+        <ng-container *ngIf="!isLogged">
+          <div>
+            <div>
+              <input type="text" placeholder="Login" [(ngModel)]="login"/>
+            </div>
+            <div>
+              <input type="password" placeholder="Password" [(ngModel)]="password"/>
+            </div>
+            <div>
+              <button (click)="auth()">Log in</button>
+            </div>
+          </div>
+  </ng-container>
+        
+
+  <ng-container *ngIf="isLogged">
+      
+  <!-- <ng-container > -->
+
+      <h2>i luv u tolkyn  </h2>
+
+
+          <div *ngFor="let c of courses">
+              Name : <input type="text" [(ngModel)]="c.name" >
+              <br>
+              Description : <input type="text" [(ngModel)]="c.description" >
+              <br>
+              <span style="color: red" (click)="deleteCourse(c)"> Удалить</span>
+              <span style="color: green" (click)="updateCourse(c)"> Изменить</span>
+              <br>
+          </div>
+
+      <div>
+          CREATE COURSE:
+      <div>
+          <input type="text" [(ngModel)]="name" />
+          <input type="text" [(ngModel)]="description" />
+          <button (click)="createCourse()">Create</button>
+      </div>
+
+      
+      </div>
+      <br>
+      <div>
+          <button (click)="logout()">Log out</button>
+      </div>
+          
+  </ng-container>
     </div>
-
-
-
-
-
-
-
-
 
   <div class="rootpage">
       <div class="links">
@@ -26,4 +68,5 @@
       
   </div>
 
+</div>
 </div>

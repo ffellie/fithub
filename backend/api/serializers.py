@@ -2,7 +2,6 @@ from api.models import Course, Lecture, Lesson, User
 from rest_framework import serializers
 
 
-
 class CourseSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField
@@ -23,6 +22,7 @@ class LectureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lecture
         fields = ('id', 'title', 'description', 'date_added', 'course')
+
 
 class LessonSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField()

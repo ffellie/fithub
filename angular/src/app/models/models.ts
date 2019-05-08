@@ -4,3 +4,7 @@ export interface Course{
     description: string;
 
 }
+
+export interface IAuthResponse {
+    token: string;
+  }
