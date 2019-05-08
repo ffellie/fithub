@@ -43,3 +43,36 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email',)
+
+class ForumSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    title = serializers.CharField(required=True)
+    description = serializers.CharField()
+    date_added = serializers.DateTimeField()
+    course = CourseSerializer()
+
+    class Meta:
+        model = Lecture
+        fields = ('id', 'title', 'description', 'date_added', 'course')
+
+class TopicSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    title = serializers.CharField(required=True)
+    description = serializers.CharField()
+    date_added = serializers.DateTimeField()
+    forum = ForumSerializer()
+
+    class Meta:
+        model = Lecture
+        fields = ('id', 'title', 'description', 'date_added', 'forum')
+
+class EventSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField(required=True)
+    description = serializers.CharField()
+    date_added = serializers.DateTimeField()
+    course = CourseSerializer()
+
+    class Meta:
+        model = Lecture
+        fields = ('id', 'name', 'description', 'date_added', 'course')
