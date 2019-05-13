@@ -61,7 +61,6 @@ class LectureList(APIView):
         return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-
 class LessonList(APIView):
     def get(self,request,pk):
         course = Course.objects.get(id=pk)
