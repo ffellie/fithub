@@ -1,4 +1,4 @@
-from api.models import Course, Lecture, Lesson, User
+from api.models import Course, Lecture, Lesson, User, News
 from rest_framework import serializers
 
 
@@ -17,11 +17,10 @@ class LectureSerializer(serializers.ModelSerializer):
     title = serializers.CharField(required=True)
     description = serializers.CharField()
     date_added = serializers.DateTimeField()
-    course = CourseSerializer()
 
     class Meta:
         model = Lecture
-        fields = ('id', 'title', 'description', 'date_added', 'course')
+        fields = ('id', 'title', 'description', 'date_added')
 
 
 class LessonSerializer(serializers.ModelSerializer):
@@ -32,17 +31,17 @@ class LessonSerializer(serializers.ModelSerializer):
     day = serializers.CharField()
     start_time = serializers.TimeField()
     end_time = serializers.TimeField()
-    course = CourseSerializer()
 
     class Meta:
         model = Lesson
-        fields = ('id','title','info','room','day','start_time','end_time', 'course')
+        fields = ('id', 'title', 'info', 'room', 'day', 'start_time', 'end_time')
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email',)
+
 
 class ForumSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
@@ -55,6 +54,7 @@ class ForumSerializer(serializers.ModelSerializer):
         model = Lecture
         fields = ('id', 'title', 'description', 'date_added', 'course')
 
+
 class TopicSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(required=True)
@@ -66,6 +66,7 @@ class TopicSerializer(serializers.ModelSerializer):
         model = Lecture
         fields = ('id', 'title', 'description', 'date_added', 'forum')
 
+
 class EventSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField(required=True)
@@ -76,3 +77,15 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lecture
         fields = ('id', 'name', 'description', 'date_added', 'course')
+
+
+class NewsSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    title = serializers.CharField(required=True)
+    text = serializers.CharField()
+    created_at = serializers.DateTimeField()
+
+    class Meta:
+        model = News
+        fields = ('id', 'title', 'text', 'created_at', )
+

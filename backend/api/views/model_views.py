@@ -4,23 +4,27 @@ from rest_framework.response import Response
 from rest_framework import status
 from api.models import Course, Lecture
 from api.serializers import CourseSerializer, LectureSerializer, LessonSerializer
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
 class CourseList(APIView):
+    permission_classes = (IsAdminUser, )
+
     def get(self, request):
-        courses = Course.objects.all()
+        courses = Course.objects.for_user(request.user)
         serializer = CourseSerializer(courses, many=True)
         return Response(serializer.data)
 
     def post(self, request):
         serializer = CourseSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(author=self.request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class CourseDetail(APIView):
+    permission_classes = (IsAdminUser,)
 
     def get_object(self, pk):
         try:
@@ -48,30 +52,37 @@ class CourseDetail(APIView):
 
 
 class LectureList(APIView):
+    permission_classes = (IsAdminUser,)
+
     def get(self, request, pk):
         course = Course.objects.get(id=pk)
-        lectures = course.lecture_set.all()
+        lectures = course.lectures.all()
         serializer = LectureSerializer(lectures, many=True)
         return Response(serializer.data)
+
     def post(self, request,pk):
-        serializer= LectureSerializer(data=request.data)
+        course = Course.objects.get(id=pk)
+        serializer = LectureSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(course=course)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class LessonList(APIView):
+    permission_classes = (IsAdminUser,)
+
     def get(self,request,pk):
         course = Course.objects.get(id=pk)
-        lessons = course.lesson_set.all()
+        lessons = course.lessons.all()
         serializer = LessonSerializer(lessons, many=True)
         return Response(serializer.data)
-    def post(self, request):
-        serializer = LessonSerializer(data= request.data)
+
+    def post(self, request, pk):
+        serializer = LessonSerializer(data=request.data)
+        course = Course.objects.get(id=pk)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(course=course)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-            
