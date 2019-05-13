@@ -24,5 +24,21 @@ class Lesson(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    
+class Forum(models.Model):
+    title = models.CharField(max_length=100, default='')
+    description = models.CharField(max_length=1000, default='')
+    date_added = models.DateTimeField(default=datetime.now())
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default='')
 
-
+class Topic(models.Model):
+    title = models.CharField(max_length=100, default='')
+    description = models.CharField(max_length=1000, default='')
+    date_added = models.DateTimeField(default=datetime.now())
+    forum = models.ForeignKey(Forum, on_delete=models.CASCADE, default='')
+    
+class Event(models.Model):
+    name = models.CharField(max_length=100, default='')
+    description = models.CharField(max_length=1000, default='')
+    date_added = models.DateTimeField(default=datetime.now())
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default='')
