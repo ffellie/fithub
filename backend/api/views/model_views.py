@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from api.models import Course, Lecture
-from api.serializers import CourseSerializer, LectureSerializer, LessonSerializer
+from api.serializers import CourseSerializer, LectureSerializer, LessonSerializer, ForumSerializer, TopicSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
@@ -85,4 +85,43 @@ class LessonList(APIView):
             serializer.save(course=course)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class ForumList(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, pk):
+        course = Course.objects.get(id=pk)
+        forums = course.lectures.all()
+        serializer = ForumSerializer(forums, many=True)
+        return Response(serializer.data)
+
+    def post(self, request,pk):
+        course = Course.objects.get(id=pk)
+        serializer = ForumSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(course=course)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class TopicList(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, pk, pk1):
+        course = Course.objects.get(id=pk)
+        forum = course.lectures.get(id=pk1)
+        topics = forum.topic_set.all()
+        serializer = TopicSerializer(topics, many=True)
+        return Response(serializer.data)
+
+    def post(self, request,pk, pk1):
+        course = Course.objects.get(id=pk)
+        forum = course.lectures.get(id=pk1)
+        serializer = TopicSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(forum=forum)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
