@@ -51,6 +51,10 @@ export class ProviderService extends MainService {
 
   public sendIfLogged = new EventEmitter<boolean>();
 
+  getNews(): Observable<any> {
+    return this.http.get('http://127.0.0.1:8000/api/news/',
+    {headers: this.httpHeaders});
+  }
 
 
 }

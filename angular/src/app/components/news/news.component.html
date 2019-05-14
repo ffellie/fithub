@@ -1,24 +1,13 @@
 <div class="main">
-  <ul>
-      <li>
-          Новость 1
-         <div class="blogbody">
-          Тело Новости 1
-         </div>
-      </li>
-      <li>
-              Новость 2
-             <div class="blogbody">
-              Тело Новости 2
-             </div>
-      </li>
-      <li>
-              Новость 3
-             <div class="blogbody">
-              Тело Новости 3
-             </div>
-      </li>
+    <h2>News</h2>
 
-
-  </ul>
+    <ul>
+        <li *ngFor="let n of news">
+            <div class="blogbody"> 
+                <h4>{{n.title}}</h4>
+                <p>{{n.text}}</p>
+                <h6>{{n.created_at}}</h6>
+            </div> 
+        </li>
+    </ul>
   </div>

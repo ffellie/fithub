@@ -5,6 +5,16 @@ export interface Course{
 
 }
 
+export interface News{
+    id: number;
+    title: string;
+    text: string;
+    date: string;
+
+}
+
+
+
 export interface IAuthResponse {
     token: string;
   }
