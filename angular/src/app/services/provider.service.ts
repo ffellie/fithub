@@ -49,5 +49,8 @@ export class ProviderService extends MainService {
     return this.post('http://localhost:8000/api/logout/', {});
   }
 
+  public sendIfLogged = new EventEmitter<boolean>();
+
+
 
 }

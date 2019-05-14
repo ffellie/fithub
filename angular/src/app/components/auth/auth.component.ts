@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProviderService } from 'src/app/services/provider.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +8,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  isLogged = false;
+
+  login = '';
+  password = '';
+
+  constructor(private provider: ProviderService) { }
 
   ngOnInit() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.isLogged = true;
+      this.sendIfLogged();
+
+    }
   }
 
+  auth() {
+    if (this.login !== '' && this.password !== '') {
+      this.provider.auth(this.login, this.password).then(res => {
+        localStorage.setItem('token', res.token);
+        this.isLogged = true;
+        this.sendIfLogged();
+      });
+    }
+  }
+
+  logout() {
+    this.provider.logout().then(res => {
+      this.isLogged = false;
+      localStorage.clear();
+      this.sendIfLogged();
+    });
+  }
+
+  sendIfLogged (){
+    this.provider.sendIfLogged.emit(this.isLogged);
+  }
 }

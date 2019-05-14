@@ -16,9 +16,9 @@ export class ClassComponent implements OnInit {
   course = { name : this.name, description: this.description };
  
   isLogged = false;
+  ifEditing = false;
+  edited: Course= {id: -1, name: "ads", description: 'asd'};
 
-  login = '';
-  password = '';
 
   constructor(private provider: ProviderService) {
     // const token = localStorage.getItem('token');
@@ -34,6 +34,13 @@ export class ClassComponent implements OnInit {
       this.isLogged = true;
     }
     this.getCourses();
+    this.provider.sendIfLogged.subscribe(res => {
+      this.isLogged = res;
+      if (this.isLogged) {
+        this.getCourses();
+      }
+    });
+    
   }
 
   getCourses = () => {
@@ -82,22 +89,13 @@ export class ClassComponent implements OnInit {
     );
   }
 
-  auth() {
-    if (this.login !== '' && this.password !== '') {
-      this.provider.auth(this.login, this.password).then(res => {
-        localStorage.setItem('token', res.token);
-        this.isLogged = true;
-        this.getCourses();
-      });
-    }
+  edit(c: Course) {
+    this.edited=c;
+    this.ifEditing = true;
+
   }
 
-  logout() {
-    this.provider.logout().then(res => {
-      this.isLogged = false;
-      localStorage.clear();
-    });
-  }
+  
 
 
 }

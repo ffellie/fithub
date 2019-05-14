@@ -1,15 +1,24 @@
 
 <div id="lgb">
 <div id="login-box">
-  <form action="" method="get">
-          <label for="lb-username"> Логин: </label>
-      <input id="lb-username" type="text">
+  <div >
+    <ng-container *ngIf="!isLogged">
+      
+      <label for="lb-username"> Логин: </label>
+      <input id="lb-username" type="text" [(ngModel)]="login">
       <br>
       <label for="lb-password"> Пароль: </label>
-      <input id="lb-password" type="password">
+      <input id="lb-password" type="password" [(ngModel)]="password">
       <br>
-      <button id="lb-submit-btn" type="submit"> Вход</button>
-  </form>
+      <button id="lb-submit-btn" (click)="auth()"> Вход</button>
+    </ng-container> 
+    <ng-container *ngIf="isLogged">
+        <button (click)="logout()">Log out</button>
+
+    </ng-container>
+    
+  </div>
+
 
   <a href='register'>Зарегистрироваться </a>
 
