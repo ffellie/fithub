@@ -43,3 +43,16 @@ h1 {
     margin: 4px;
     padding: 4px;
 }
+
+#roflmao {
+    position: relative;
+    top: 50px;
+    width: 300px;
+    padding: 2px;
+    border: 2px solid cyan;
+}
+#courses {
+    position: relative;
+    top: -100px;
+    left: 400px;
+}

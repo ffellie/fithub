@@ -13,6 +13,8 @@ import { ClassComponent } from './components/class/class.component';
 import {HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProviderService } from 'src/app/services/provider.service';
 import {AuthInterceptor} from './AuthInterceptor';
+import { CourseComponent } from './components/course/course.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import {AuthInterceptor} from './AuthInterceptor';
     NewsComponent,
     InfoComponent,
     AuthComponent,
-    ClassComponent
+    ClassComponent,
+    CourseComponent
+
   ],
   imports: [
     BrowserModule,

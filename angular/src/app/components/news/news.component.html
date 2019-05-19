@@ -1,13 +1,16 @@
 <div class="main">
     <h2>News</h2>
-
+    <div class="hr_cut" style="position: relative; left: 40px;"></div>
     <ul>
         <li *ngFor="let n of news">
             <div class="blogbody"> 
-                <h4>{{n.title}}</h4>
-                <p>{{n.text}}</p>
-                <h6>{{n.created_at}}</h6>
+                <h4 style="text-decoration: underline;">{{n.title}}</h4>
+                <p style="border: 2px solid lightslategray;">{{n.text}}</p>
+                <h6 style="border: 2px solid lightslategray; width: 115px;">{{n.created_at}}</h6>
             </div> 
+            <div class="hr_cut"></div>
         </li>
     </ul>
+    <button id="prev">Previous</button>
+    <button id="next">Next</button>
   </div>

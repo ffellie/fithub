@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProviderService extends MainService {
-
+  public sendMessage = new EventEmitter<Course>();
+  
   httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'})
 
   constructor(http: HttpClient) {
@@ -55,6 +56,11 @@ export class ProviderService extends MainService {
     return this.http.get('http://127.0.0.1:8000/api/news/',
     {headers: this.httpHeaders});
   }
+
+  // getCourseForCourse(lol: Course): Observable<any> {
+  //   return this.http.get('http://127.0.0.1:8000/api/courses/'+ lol.id + '/',
+  //   {headers: this.httpHeaders});
+  // }
 
 
 }

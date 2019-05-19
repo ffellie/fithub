@@ -12,7 +12,7 @@ export class ClassComponent implements OnInit {
   public courses: Course[] = [];
   name = '';
   description = '';
-
+  public remembercoursename: Course;
   course = { name : this.name, description: this.description };
  
   isLogged = false;
@@ -94,8 +94,13 @@ export class ClassComponent implements OnInit {
     this.ifEditing = true;
 
   }
-
+  rememberCourseMethod(name: Course) {
+    this.remembercoursename=name;
+  }
   
+  sendMessageByService() {
+    this.provider.sendMessage.emit(this.remembercoursename);
+  }
 
 
 }

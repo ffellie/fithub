@@ -5,11 +5,32 @@
 <ng-container *ngIf="isLogged">
       
   <!-- <ng-container > -->
-
+      <div id="roflmao">
+          <h3>Create Course:</h3>
+            Name: <input type="text" [(ngModel)]="name" />
+            <br>
+            Description: <input type="text" [(ngModel)]="description" />
+            <br>
+            <button (click)="createCourse()">Create</button>
+        </div>
+        <div style="position: relative; top: 100px;">
+            <ng-container *ngIf="ifEditing">
+                <h3>Edit Course</h3>
+                Name : <input type="text" [(ngModel)]="edited.name" >
+                <br>
+                Description : <input type="text" [(ngModel)]="edited.description" >
+                <br>
+                <button (click)="updateCourse(edited)">
+                  OK
+                </button>
+            </ng-container>
+        </div>
+      <div id="courses" style="position: relative;">
         <h1> Your courses :</h1>
+        
           <h4>
-          <div *ngFor="let c of courses">
-              Name : {{c.name}}
+          <div *ngFor="let c of courses" style="border: 2px solid lightblue; width: 300px; margin: 5px 0;">
+              <a (click)="rememberCourseMethod" (click)="sendMessageByService"  href="course"  >Name : {{c.name}}</a>
               <br>
               Description : {{c.description}}
               <br>
@@ -19,35 +40,9 @@
           </div>
           <br>
         </h4>
-
-      <div>
-          <ng-container *ngIf="ifEditing">
-              <h3>Edit Course</h3>
-              Name : <input type="text" [(ngModel)]="edited.name" >
-              <br>
-              Description : <input type="text" [(ngModel)]="edited.description" >
-              <br>
-              <button (click)="updateCourse(edited)">
-                OK
-              </button>
-          </ng-container>
-        <br>
-        <br>
-
-          <h3>Create Course:</h3>
-        <div>
-            
-
-
-            Name: <input type="text" [(ngModel)]="name" />
-            <br>
-            Description: <input type="text" [(ngModel)]="description" />
-            <br>
-            <button (click)="createCourse()">Create</button>
         </div>
-
+        
       
-      </div>
       <br>
       
           
