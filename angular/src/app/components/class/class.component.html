@@ -24,7 +24,7 @@
                   <li>Course title: {{item.name}} <br>
                       Course description: {{item.description}}
                       <br>
-                      <button class="registerbuttons" (click)="createCourse()">Register</button>
+                      <button class="registerbuttons" (click)="createCourse2(item.name, item.description)">Register</button>
                   </li>
                 </ul>
             </div>
@@ -50,7 +50,7 @@
               <br>
               <a>Description : {{c.description}}</a>
               <br>
-              <span style="color: red" (click)="deleteCourse(c)"> Unregister </span>
+              <span style="color: red" (click)="deleteCourse2(c)"> Unregister </span>
               <br>
           </div>
           <br>

@@ -20,7 +20,9 @@ class Course(models.Model):
     description = models.CharField(max_length=1000, default='')
     subjects = models.ForeignKey(Students, on_delete=models.CASCADE, default=1, related_name='subjects1')
 
-
+class Course2(models.Model):
+    name = models.CharField(max_length=200, default='')
+    description = models.CharField(max_length=1000, default='')
 
 class Lecture(models.Model):
     title = models.CharField(max_length=100, default='')

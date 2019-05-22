@@ -53,6 +53,30 @@ export class ClassComponent implements OnInit {
     
   }
 
+  createCourse2(name:string, description:string){
+    this.provider.createCourse2(this.studentcoursesid, name, description).then(res=>{
+      this.studentcourses.push(res);
+      this.provider.sendIfLogged2.subscribe(
+        res=>{
+          this.studentcoursesid = res;
+          console.log(res);
+          console.log(res);
+          this.provider.getStudentCourses(res).then(res=>{
+            this.studentcourses = res;
+          });
+        }
+      );
+    });
+  }
+
+  deleteCourse2(c: Course){
+    this.provider.deleteCourse2(this.studentcoursesid, c.id).then(res=>{
+      this.provider.getStudentCourses(this.studentcoursesid).then(res=>{
+        this.studentcourses = res;
+      });
+    });
+  }
+
   getCourses = () => {
     this.provider.sendIfLogged2.subscribe(
       res=>{
@@ -64,7 +88,7 @@ export class ClassComponent implements OnInit {
         });
       }
     )
-      this.provider.getCourses().subscribe(
+      this.provider.getAllCourses().subscribe(
         data => {
           this.courses = data;
         },

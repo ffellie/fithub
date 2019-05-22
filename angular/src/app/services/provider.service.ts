@@ -23,9 +23,25 @@ export class ProviderService extends MainService {
     {headers: this.httpHeaders});
   }
 
+  getAllCourses(): Observable<any> {
+    return this.http.get('http://localhost:8000/api/allcourses/', {
+      headers: this.httpHeaders
+    });
+  }
+
   getCourses2(id): Observable<any> {
     return this.http.get('http://127.0.0.1:8000/api/studentcourses/' + id,
     {headers: this.httpHeaders});
+  }
+  createCourse2(id:number, name: string, desc: string): Promise<Course> {
+    return this.post('http://127.0.0.1:8000/api/studentcourses/' + id + '/', {
+      name: name,
+      description: desc,
+      subjects: id
+    });
+  }
+  deleteCourse2(id:number, id1:number): Promise<any> {
+    return this.delet('http://127.0.0.1:8000/api/studentcourses/' + id + '/course/' + id1 + '/', {});
   }
 
   updateCourse(course): Observable<any> {
@@ -75,6 +91,8 @@ export class ProviderService extends MainService {
   getStudentCourses(pk: number): Promise<Course[]>{
     return this.get('http://localhost:8000/api/studentcourses/' + pk + '/',{})
   }
+
+
   // getCourseForCourse(lol: Course): Observable<any> {
   //   return this.http.get('http://127.0.0.1:8000/api/courses/'+ lol.id + '/',
   //   {headers: this.httpHeaders});
