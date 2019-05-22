@@ -8,17 +8,16 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
 class CourseList(APIView):
-    permission_classes = (IsAdminUser, )
 
     def get(self, request):
-        courses = Course.objects.for_user(request.user)
+        courses = Course.objects.all()
         serializer = CourseSerializer(courses, many=True)
         return Response(serializer.data)
 
     def post(self, request):
         serializer = CourseSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(author=self.request.user)
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 

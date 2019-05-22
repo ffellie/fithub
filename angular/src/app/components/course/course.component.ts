@@ -11,6 +11,7 @@ import { ProviderService } from 'src/app/services/provider.service';
 export class CourseComponent implements OnInit {
   message: Course; 
   
+  
   constructor(private provider: ProviderService) {
     // const token = localStorage.getItem('token');
     // if (token) {
