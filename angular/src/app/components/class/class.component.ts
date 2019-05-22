@@ -3,7 +3,7 @@ import { Course } from 'src/app/models/models';
 import { MainService } from 'src/app/services/main.service';
 import { ProviderService } from 'src/app/services/provider.service';
 import { AuthComponent } from '../auth/auth.component';
-import { resolve } from 'dns';
+// import { resolve } from 'dns';
 
 @Component({
   selector: 'app-class',
@@ -22,7 +22,7 @@ export class ClassComponent implements OnInit {
   studentcoursesid: number;
   isLogged = false;
   ifEditing = false;
-  edited: Course= {id: -1, name: "ads", description: 'asd'};
+  // edited: Course= {id: -1, name: "ads", description: 'asd'};
 
 
   constructor(private provider: ProviderService) {
@@ -131,11 +131,11 @@ export class ClassComponent implements OnInit {
     );
   }
 
-  edit(c: Course) {
-    this.edited=c;
-    this.ifEditing = true;
+  // edit(c: Course) {
+  //   this.edited=c;
+  //   this.ifEditing = true;
 
-  }
+  // }
   rememberCourseMethod(name: Course) {
     this.remembercoursename=name;
   }

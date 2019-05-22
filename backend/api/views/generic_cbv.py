@@ -6,8 +6,8 @@ from datetime import datetime
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import filters
-from api.serializers import StudentSerializer, CourseSerializer
-from api.models import Students, Course2, Course
+from api.serializers import StudentSerializer, CourseSerializer, RoomsSerializer
+from api.models import Students, Course2, Course, Rooms
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 
 from api.models import News
@@ -74,6 +74,30 @@ class Courses2List(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = Course2.objects.all()
         return queryset
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+
+class RoomsList(generics.ListCreateAPIView):
+    serializer_class = RoomsSerializer
+
+    def get_queryset(self):
+        queryset = Rooms.objects.all()
+        return queryset
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+
+class RoomsList2(generics.ListCreateAPIView):
+    serializer_class = RoomsSerializer
+    pagination_class = LimitOffsetPagination
+
+
+
+    def get_queryset(self):
+        return Rooms.objects.all()
 
     def perform_create(self, serializer):
         serializer.save()

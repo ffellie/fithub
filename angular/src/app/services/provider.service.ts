@@ -2,7 +2,7 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {MainService} from './main.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Course, IAuthResponse, IRealUser, IStudent} from 'src/app/models/models';
+import {Course, IAuthResponse, IRealUser, IStudent, IRoom, IRoomPaginated} from 'src/app/models/models';
 import { Observable } from 'rxjs';
 
 
@@ -92,7 +92,13 @@ export class ProviderService extends MainService {
     return this.get('http://localhost:8000/api/studentcourses/' + pk + '/',{})
   }
 
+  getRooms(): Promise<IRoom[]> {
+    return this.get('http://localhost:8000/api/rooms/', {})
+  }
 
+  getRoomsPag(int: number): Promise<IRoomPaginated> {
+    return this.get('http://localhost:8000/api/roomspag/?limit=5&offset=' + int,{});
+  }
   // getCourseForCourse(lol: Course): Observable<any> {
   //   return this.http.get('http://127.0.0.1:8000/api/courses/'+ lol.id + '/',
   //   {headers: this.httpHeaders});

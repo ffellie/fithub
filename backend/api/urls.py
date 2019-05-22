@@ -19,5 +19,7 @@ urlpatterns = [
     path('studentcourses/<int:pk>/', views.CoursesList.as_view()),
     path('allcourses/', views.Courses2List.as_view()),
     path('studentcourses/<int:pk>/course/<int:pk2>/', views.CourseDetail.as_view()),
+    path('rooms/', views.RoomsList.as_view()),
+    path('roomspag/', views.RoomsList2.as_view()),
     path('logout/', logout)
 ]

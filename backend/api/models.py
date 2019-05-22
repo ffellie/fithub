@@ -67,3 +67,8 @@ class News(models.Model):
     title = models.CharField(max_length=100)
     text = models.CharField(max_length=2000)
     created_at = models.DateTimeField()
+
+class Rooms(models.Model):
+    number = models.IntegerField()
+    isadministrative = models.BooleanField()
+    postfix = models.CharField(max_length=200)

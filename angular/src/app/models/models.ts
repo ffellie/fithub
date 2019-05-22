@@ -34,3 +34,16 @@ export interface IStudent {
     fname: string;
     sname: string;
 }
+
+export interface IRoom {
+    number: number;
+    isadministrative: boolean;
+    postfix: string;
+}
+
+export interface IRoomPaginated {
+    count: number;
+    next: string;
+    previous: string;
+    results: IRoom[];
+}

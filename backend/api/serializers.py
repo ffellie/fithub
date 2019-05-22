@@ -1,4 +1,4 @@
-from api.models import Course, Lecture, Lesson, User, News, Students
+from api.models import Course, Lecture, Lesson, User, News, Students, Rooms
 from rest_framework import serializers
 
 
@@ -16,6 +16,18 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username', 'email', 'first_name', 'last_name',)
 
+
+
+class RoomsSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    number = serializers.IntegerField(required=True)
+    isadministrative = serializers.BooleanField(required=True)
+    postfix = serializers.CharField(required=False)
+
+    class Meta:
+        model = Rooms
+        fields = ('id', 'number', 'isadministrative', 'postfix')
+
 class LectureSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(required=True)
@@ -24,7 +36,7 @@ class LectureSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lecture
-        fields = ('id', 'title', 'description', 'date_added')
+        fields = ('id', 'number', 'isadministrative', 'postfix')
 
 
 class StudentSerializer(serializers.ModelSerializer):
