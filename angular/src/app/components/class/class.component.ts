@@ -29,21 +29,21 @@ export class ClassComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.provider.sendIfLogged2.subscribe(
-      res=>{
-        this.studentcoursesid = res;
-        console.log(res);
-        this.provider.getStudentCourses(res).then(res=>{
-          this.studentcourses = res;
-        });
-
-      }
-    );
     const token = localStorage.getItem('token');
     if (token) {
       this.isLogged = true;
     }
     this.getCourses();
+    this.provider.sendIfLogged2.subscribe(
+      res=>{
+        this.studentcoursesid = res;
+        console.log(res);
+        console.log(res);
+        this.provider.getStudentCourses(res).then(res=>{
+          this.studentcourses = res;
+        });
+      }
+    );
     this.provider.sendIfLogged.subscribe(res => {
       this.isLogged = res;
       if (this.isLogged) {
@@ -54,6 +54,16 @@ export class ClassComponent implements OnInit {
   }
 
   getCourses = () => {
+    this.provider.sendIfLogged2.subscribe(
+      res=>{
+        this.studentcoursesid = res;
+        console.log(res);
+        console.log(res);
+        this.provider.getStudentCourses(res).then(res=>{
+          this.studentcourses = res;
+        });
+      }
+    )
       this.provider.getCourses().subscribe(
         data => {
           this.courses = data;

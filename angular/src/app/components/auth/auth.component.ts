@@ -29,11 +29,11 @@ export class AuthComponent implements OnInit {
   login = '';
   password = '';
 
-  @Input() studentcourses2 = this.studentcourses;
 
   constructor(private provider: ProviderService) { }
 
   ngOnInit() {
+    
     const token = localStorage.getItem('token');
     if (token) {
       this.isLogged = true;
@@ -49,7 +49,7 @@ export class AuthComponent implements OnInit {
           this.determineEmployee(res.first_name, res.last_name);
           this.provider.getStudentCourses(this.item2.id);
           console.log(this.item2.id);
-
+          this.sendIfLogged2();
         });
   }
 
