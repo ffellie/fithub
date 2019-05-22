@@ -14,5 +14,8 @@ urlpatterns = [
     path('student/courses/<int:pk>/forums/<int:pk1>/', views.TopicList.as_view()),
     path('news/', NewsList.as_view()),
     path('login/', login),
+    path('students/', views.StudentsList.as_view()),
+    path('users/<int:pk>/', views.UserViewSet.as_view({'get':'retrieve'})),
+    path('studentcourses/<int:pk>/', views.CoursesList.as_view()),
     path('logout/', logout)
 ]

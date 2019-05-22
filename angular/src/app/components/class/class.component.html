@@ -7,6 +7,7 @@
 <ng-container *ngIf="isLogged">
       
   <!-- <ng-container > -->
+    <ng-container *ngIf="!student">
       <div id="roflmao">
           <h3>Create Course:</h3>
             Name: <input type="text" [(ngModel)]="name" />
@@ -15,6 +16,19 @@
             <br>
             <button (click)="createCourse()">Create</button>
         </div>
+      </ng-container>
+      <ng-container *ngIf="student">
+          <div id="roflmao">
+              <h3>Avaiable Courses:</h3>
+                <ul *ngFor="let item of courses">
+                  <li>Course title: {{item.name}} <br>
+                      Course description: {{item.description}}
+                      <br>
+                      <button class="registerbuttons" (click)="createCourse()">Register</button>
+                  </li>
+                </ul>
+            </div>
+          </ng-container>
         <div style="position: relative; top: 100px;">
             <ng-container *ngIf="ifEditing">
                 <h3>Edit Course</h3>
@@ -28,16 +42,15 @@
             </ng-container>
         </div>
       <div id="courses" style="position: relative;">
-        <h1> Your courses :</h1>
+        <h1 style="color: white;"> Your courses :</h1>
         
           <h4>
-          <div *ngFor="let c of courses" style="border: 2px solid lightblue; width: 300px; margin: 5px 0;">
+          <div *ngFor="let c of studentcourses" class="coursesu"style="border: 2px solid red; width: 300px; margin: 5px 0; background-color: #ff6f61; border-radius: 15px; ">
               <a (click)="rememberCourseMethod" (click)="sendMessageByService"  href="course"  >Name : {{c.name}}</a>
               <br>
-              Description : {{c.description}}
+              <a>Description : {{c.description}}</a>
               <br>
-              <span style="color: red" (click)="deleteCourse(c)"> Удалить</span>
-              <span style="color: green" (click)="edit(c)"> Изменить</span>
+              <span style="color: red" (click)="deleteCourse(c)"> Unregister </span>
               <br>
           </div>
           <br>

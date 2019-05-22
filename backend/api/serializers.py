@@ -1,16 +1,20 @@
-from api.models import Course, Lecture, Lesson, User, News
+from api.models import Course, Lecture, Lesson, User, News, Students
 from rest_framework import serializers
 
 
 class CourseSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    name = serializers.CharField
-    description = serializers.CharField
+    name = serializers.CharField(required=True)
+    description = serializers.CharField(required=True)
 
     class Meta:
         model = Course
         fields = ('id', 'name', 'description')
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'first_name', 'last_name',)
 
 class LectureSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
@@ -22,6 +26,15 @@ class LectureSerializer(serializers.ModelSerializer):
         model = Lecture
         fields = ('id', 'title', 'description', 'date_added')
 
+
+class StudentSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    fname = serializers.CharField(required=True)
+    sname = serializers.CharField(required=True)
+
+    class Meta:
+        model = Students
+        fields = ('id', 'fname', 'sname')
 
 class LessonSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField()
@@ -36,11 +49,6 @@ class LessonSerializer(serializers.ModelSerializer):
         model = Lesson
         fields = ('id', 'title', 'info', 'room', 'day', 'start_time', 'end_time')
 
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'email',)
 
 
 class ForumSerializer(serializers.ModelSerializer):

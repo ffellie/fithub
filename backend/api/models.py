@@ -10,12 +10,16 @@ class CourseManager(models.Manager):
         return self.filter(author=user)
 
 
+class Students(models.Model):
+    fname = models.CharField(max_length=100)
+    sname = models.CharField(max_length=100)
+
+
 class Course(models.Model):
     name = models.CharField(max_length=200, default='')
     description = models.CharField(max_length=1000, default='')
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    subjects = models.ForeignKey(Students, on_delete=models.CASCADE, default=1, related_name='subjects1')
 
-    objects = CourseManager()
 
 
 class Lecture(models.Model):
@@ -33,6 +37,7 @@ class Lesson(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='lessons')
+    lessons = models.ForeignKey(Students,  on_delete=models.CASCADE, default=1, related_name='lessons1')
 
 
 class Forum(models.Model):
@@ -46,7 +51,7 @@ class Topic(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
     date_added = models.DateTimeField(default=datetime.now())
-    forum = models.ForeignKey(Forum, on_delete=models.CASCADE )
+    forum = models.ForeignKey(Forum, on_delete=models.CASCADE)
 
 
 class Event(models.Model):
