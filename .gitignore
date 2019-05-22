@@ -270,7 +270,8 @@ venv.bak/
 
 bin/                
 include/            
-lib/                
+lib/       
+fithubxd/
 .idea/
 pip-selfcheck.json
 package-lock.json
