@@ -1,19 +1,19 @@
 
 <div id="lgb">
-<div id="login-box">
+<div id="login-box" class="jumbotron">
   <div >
-    <ng-container *ngIf="!isLogged">
+    <ng-container *ngIf="!isLogged" class="form-group">
       
       <label for="lb-username"> Логин: </label>
-      <input id="lb-username" type="text" [(ngModel)]="login">
+      <input id="lb-username" type="text" [(ngModel)]="login" class="form-control" placeholder="Username">
       <br>
       <label for="lb-password"> Пароль: </label>
-      <input id="lb-password" type="password" [(ngModel)]="password">
+      <input id="lb-password" type="password" [(ngModel)]="password" class="form-control" placeholder="Password">
       <br>
-      <button id="lb-submit-btn" (click)="auth()"> Вход</button>
+      <button id="lb-submit-btn" (click)="auth()" class="btn btn-primary"> Login </button>
     </ng-container> 
     <ng-container *ngIf="isLogged">
-        <button (click)="logout()">Log out</button>
+        <button (click)="logout()" class="btn btn-primary">Log out</button>
 
     </ng-container>
     

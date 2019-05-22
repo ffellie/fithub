@@ -1,13 +1,13 @@
-.fullbody {
+.jumbotron {
     margin-top: 20px;
     padding-left: 2%;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite;
     border: 3px darkcyan solid;
-    border-radius: 15px;
+    border-radius: 15px; */
     margin: 50px 300px;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite;
     border: 3px darkcyan solid;
-    border-radius: 30px;
+    border-radius: 30px; */
 
 }
 h1 {
@@ -45,14 +45,16 @@ h1 {
 }
 
 #roflmao {
-    position: relative;
-    top: 50px;
+    position: absolute;
+    top: 55px;
+    left: 30px;
     width: 300px;
-    padding: 2px;
-    border: 2px solid cyan;
+    /* padding: 2px; */
+    /* border: 2px solid cyan; */
 }
 #courses {
-    position: relative;
-    top: -100px;
-    left: 400px;
+    position: absolute;
+    width: 450px;
+    top: -20px;
+    left: 350px;
 }

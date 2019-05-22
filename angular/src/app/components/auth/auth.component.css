@@ -9,7 +9,7 @@
     padding-right: 1.4%;
     display: inline-block;
     width: 290px;
-    background-color: #ff6f61;
+    /* background-color: #ff6f61; */
 }
 #login-box form {
     margin: 5px 30px 0px 5px;
@@ -19,12 +19,12 @@
     font-size: 20px;
     padding: 4.5px;
 }
-#login-box form input {
+/* #login-box form input {
     height: 25px;
     width: 200px;
     margin: 5px 0px;
-}
-#login-box form button{
+} */
+/* #login-box form button{
     font-size: 18px;
     margin-top: 20px;
     border: 0;
@@ -32,7 +32,7 @@
     width: 200px;
     background-color:  #262626 ;
     color: white;
-}
+} */
 #login-box a {
     
     margin-top: 100px;
@@ -54,7 +54,7 @@
 	font-family: '33535gillsansmt' !important;
 }
 
-#login-box button:hover {
+/* #login-box button:hover {
     font-size: 22px;
     cursor: pointer;
-}
+} */
