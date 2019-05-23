@@ -10,21 +10,13 @@
       <label for="lb-password"> Пароль: </label>
       <input id="lb-password" type="password" [(ngModel)]="password" class="form-control" placeholder="Password">
       <br>
-<<<<<<< HEAD
-      <button id="lb-submit-btn" (click)="auth()" class="btn btn-primary"> Login </button>
-    </ng-container> 
-    <ng-container *ngIf="isLogged">
-        <button (click)="logout()" class="btn btn-primary">Log out</button>
-
-=======
-      <button id="lb-submit-btn" (click)="auth()"> Вход</button>
+      <button id="lb-submit-btn" (click)="auth()" class="btn btn-primary"> Вход</button>
       <br>
       <a href='register'>Зарегистрироваться </a>
     </ng-container> 
     <ng-container *ngIf="isLogged">
         <h3>Hello, {{current_studentfname}} {{current_studentsname}}!</h3>
-        <button (click)="logout()">Log out</button>
->>>>>>> a6fe19f4850d3ca022ca1860fa8ff3cf5caee20d
+        <button (click)="logout()" class="btn btn-primary">Log out</button>
     </ng-container>
     
   </div>

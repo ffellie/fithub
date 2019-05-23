@@ -16,9 +16,9 @@ export class ClassComponent implements OnInit {
   student = true;
   description = '';
   public remembercoursename: Course;
-  course = { name : this.name, description: this.description };
- 
-  studentcourses: Course[]=[];
+  course = { name: this.name, description: this.description };
+
+  studentcourses: Course[] = [];
   studentcoursesid: number;
   isLogged = false;
   ifEditing = false;
@@ -35,11 +35,11 @@ export class ClassComponent implements OnInit {
     }
     this.getCourses();
     this.provider.sendIfLogged2.subscribe(
-      res=>{
+      res => {
         this.studentcoursesid = res;
         console.log(res);
         console.log(res);
-        this.provider.getStudentCourses(res).then(res=>{
+        this.provider.getStudentCourses(res).then(res => {
           this.studentcourses = res;
         });
       }
@@ -50,18 +50,18 @@ export class ClassComponent implements OnInit {
         this.getCourses();
       }
     });
-    
+
   }
 
-  createCourse2(name:string, description:string){
-    this.provider.createCourse2(this.studentcoursesid, name, description).then(res=>{
+  createCourse2(name: string, description: string) {
+    this.provider.createCourse2(this.studentcoursesid, name, description).then(res => {
       this.studentcourses.push(res);
       this.provider.sendIfLogged2.subscribe(
-        res=>{
+        res => {
           this.studentcoursesid = res;
           console.log(res);
           console.log(res);
-          this.provider.getStudentCourses(res).then(res=>{
+          this.provider.getStudentCourses(res).then(res => {
             this.studentcourses = res;
           });
         }
@@ -69,9 +69,9 @@ export class ClassComponent implements OnInit {
     });
   }
 
-  deleteCourse2(c: Course){
-    this.provider.deleteCourse2(this.studentcoursesid, c.id).then(res=>{
-      this.provider.getStudentCourses(this.studentcoursesid).then(res=>{
+  deleteCourse2(c: Course) {
+    this.provider.deleteCourse2(this.studentcoursesid, c.id).then(res => {
+      this.provider.getStudentCourses(this.studentcoursesid).then(res => {
         this.studentcourses = res;
       });
     });
@@ -79,23 +79,23 @@ export class ClassComponent implements OnInit {
 
   getCourses = () => {
     this.provider.sendIfLogged2.subscribe(
-      res=>{
+      res => {
         this.studentcoursesid = res;
         console.log(res);
         console.log(res);
-        this.provider.getStudentCourses(res).then(res=>{
+        this.provider.getStudentCourses(res).then(res => {
           this.studentcourses = res;
         });
       }
     )
-      this.provider.getAllCourses().subscribe(
-        data => {
-          this.courses = data;
-        },
-        error => {
-          console.log(error);
-        }
-      )
+    this.provider.getAllCourses().subscribe(
+      data => {
+        this.courses = data;
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   createCourse = () => {
@@ -137,9 +137,9 @@ export class ClassComponent implements OnInit {
 
   // }
   rememberCourseMethod(name: Course) {
-    this.remembercoursename=name;
+    this.remembercoursename = name;
   }
-  
+
   sendMessageByService() {
     this.provider.sendMessage.emit(this.remembercoursename);
   }

@@ -1,14 +1,11 @@
-<!-- <ng-container *ngIf="!ifSelectedCourse"> -->
-
 <div class="mainp">
-<<<<<<< HEAD
   <div class="jumbotron" style="width:750px; position: absolute; top: 100px; left: -10%; min-height: 600px">
     <div class="subjects">
       <ng-container *ngIf="isLogged">
         <div style="max-width: 25rem;" id="courses" style="position: relative;">
           <div class="list-group" style="  margin: 5px 0;">
             <h2 class=""> Your courses :</h2>
-            <div *ngFor="let c of courses" style=" width: 300px;;"
+            <div *ngFor="let c of studentcourses" style=" width: 300px;;"
               class="list-group-item list-group-item-action flex-column align-items-start">
               <a class="d-flex w-100 justify-content-between" (click)="rememberCourseMethod"
                 (click)="sendMessageByService" href="course">
@@ -17,75 +14,38 @@
               <p class="mb-1">{{c.description}}</p>
               <span style="color: red" (click)="deleteCourse(c)"> Удалить</span>
               <span style="color: green" (click)="edit(c)"> Изменить</span>
-=======
-  <div class="fullbody">
-  <div class="subjects">
-
-<ng-container *ngIf="isLogged">
-      
-  <!-- <ng-container > -->
-    <ng-container *ngIf="!student">
-      <div id="roflmao">
-          <h3>Create Course:</h3>
-            Name: <input type="text" [(ngModel)]="name" />
+              <br>
+            </div>
             <br>
-            Description: <input type="text" [(ngModel)]="description" />
-            <br>
-            <button (click)="createCourse()">Create</button>
+          </div>
         </div>
-      </ng-container>
-      <ng-container *ngIf="student">
+        <ng-container *ngIf="!student">
+          <div id="roflmao" class="card border-primary mb-3" style="max-width: 25rem; position: absolute;">
+            <div class="card-header">
+              <h4 class="card-title">Create Course:</h4>
+            </div>
+            <div class="card-body">
+              <p class="card-text"> Name:</p> <input type="text" [(ngModel)]="name" class="form-control" />
+              <br>
+              <p class="card-text"> Description:</p> <input type="text" [(ngModel)]="description"
+                class="form-control" />
+              <br>
+              <button (click)="createCourse()" class="btn btn-primary">Create</button>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="student">
           <div id="roflmao">
-              <h3>Avaiable Courses:</h3>
-                <ul *ngFor="let item of courses">
-                  <li>Course title: {{item.name}} <br>
-                      Course description: {{item.description}}
-                      <br>
-                      <button class="registerbuttons" (click)="createCourse2(item.name, item.description)">Register</button>
-                  </li>
-                </ul>
-            </div>
-          </ng-container>
-        <div style="position: relative; top: 100px;">
-            <ng-container *ngIf="ifEditing">
-                <h3>Edit Course</h3>
-                Name : <input type="text" [(ngModel)]="edited.name" >
+            <h3>Avaiable Courses:</h3>
+            <ul *ngFor="let item of courses">
+              <li>Course title: {{item.name}} <br>
+                Course description: {{item.description}}
                 <br>
-                Description : <input type="text" [(ngModel)]="edited.description" >
-                <br>
-                <button (click)="updateCourse(edited)">
-                  OK
-                </button>
-            </ng-container>
-        </div>
-      <div id="courses" style="position: relative;">
-        <h1 style="color: white;"> Your courses :</h1>
-        
-          <h4>
-          <div *ngFor="let c of studentcourses" class="coursesu"style="border: 2px solid red; width: 300px; margin: 5px 0; background-color: #ff6f61; border-radius: 15px; ">
-              <a (click)="rememberCourseMethod" (click)="sendMessageByService"  href="course"  >Name : {{c.name}}</a>
-              <br>
-              <a>Description : {{c.description}}</a>
-              <br>
-              <span style="color: red" (click)="deleteCourse2(c)"> Unregister </span>
->>>>>>> a6fe19f4850d3ca022ca1860fa8ff3cf5caee20d
-              <br>
-            </div>
-            <br>
+                <button class="registerbuttons" (click)="createCourse2(item.name, item.description)">Register</button>
+              </li>
+            </ul>
           </div>
-        </div>
-        <div id="roflmao" class="card border-primary mb-3" style="max-width: 25rem; position: absolute;">
-          <div class="card-header">
-            <h4 class="card-title">Create Course:</h4>
-          </div>
-          <div class="card-body">
-            <p class="card-text"> Name:</p> <input type="text" [(ngModel)]="name" class="form-control" />
-            <br>
-            <p class="card-text"> Description:</p> <input type="text" [(ngModel)]="description" class="form-control" />
-            <br>
-            <button (click)="createCourse()" class="btn btn-primary">Create</button>
-          </div>
-        </div>
+        </ng-container>
 
 
         <div style="position: absolute; top: 400px; left: 30px;">
