@@ -4,7 +4,7 @@ from django.urls import path
 
 urlpatterns = [
     path('courses/', CourseList.as_view()),
-    path('courses/<int:pk>/', CourseDetail.as_view()),
+    path('courses/<int:pk>/', views.CourseDetail2.as_view()),
     path('courses/<int:pk>/lectures/', LectureList.as_view()),
     path('courses/<int:pk>/lessons/', LessonList.as_view()),
     path('student/courses/', views.courses_list),
@@ -14,5 +14,16 @@ urlpatterns = [
     path('student/courses/<int:pk>/forums/<int:pk1>/', views.TopicList.as_view()),
     path('news/', NewsList.as_view()),
     path('login/', login),
+    path('students/', views.StudentsList.as_view()),
+    path('users/<int:pk>/', views.UserViewSet.as_view({'get':'retrieve'})),
+    path('studentcourses/<int:pk>/', views.CoursesList.as_view()),
+    path('allcourses/', views.Courses2List.as_view()),
+    path('studentcourses/<int:pk>/course/<int:pk2>/', views.CourseDetail.as_view()),
+    path('rooms/', views.RoomsList22.as_view()),
+    path('roomspag/', views.RoomsList222.as_view()),
+    path('rooms/<int:pk>/', views.RoomDetail.as_view()),
+    path('teacherlessons/', views.LessonList2.as_view()),
+    path('teacherlessons/<int:pk>/', views.LessonDetailCourse.as_view()),
+    path('studentlessons/<int:pk>/', views.LessonList.as_view()),
     path('logout/', logout)
 ]

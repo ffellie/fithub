@@ -1,0 +1,46 @@
+<div class="main">
+    <h2 style="color: white;">List of Rooms </h2>
+    <a style="color: white;">Search by number: </a><input type="text" class="searchin" [(ngModel)]="searchingnumber"><button class="roombutton" id="searchbutton" (click)="makeSearch()">Search</button>
+    <br>
+    <a style="color: white;">Administrative: </a><input type="checkbox" class="checkboxes" (click)="enableAdm()">
+    <a style="color: white; margin-left: 5px;">Occupied: </a><input type="checkbox" class="checkboxes2" (click)="enableOcc()">
+     <ng-container *ngFor="let item of rooms">
+       <div class="xdroom">
+        <ng-container  *ngIf="!item.isoccupied">
+      <a style="color: red; font-weight: bold;">{{item.number}}{{item.postfix}} <br>
+          <a>Administrative: {{item.isadministrative}}</a>
+        <br>
+               
+      </a>
+    </ng-container>
+    <ng-container *ngIf="item.isoccupied">
+        <a style="color: green; font-weight: bold;">{{item.number}}{{item.postfix}} <br>
+          <a>Administrative: {{item.isadministrative}}</a>
+        <br>      
+        </a>
+      </ng-container>
+      <ng-container *ngIf="!item.isoccupied">
+      <button class="roombutton" (click)="changeOccupation(item)">Occupy</button>
+      </ng-container>
+      <ng-container *ngIf="item.isoccupied">
+          <button class="roombutton" (click)="changeOccupation(item)">Free</button>
+          </ng-container>
+          <br>
+        </div>
+     </ng-container>
+     <div id="buttonss">
+        <ng-container *ngIf="currentpage==1">
+       <button class="roombutton" id="buttonss3" (click)="nextPage()">Next</button>
+         </ng-container>
+       <ng-container *ngIf="currentpage!=1">
+          <ng-container *ngIf="currentpage<pagecount">
+     <button class="roombutton" (click)="previousPage()">Previous</button>
+     <button class="roombutton" id="buttonss2" (click)="nextPage()">Next</button>
+          </ng-container>
+       </ng-container>
+       <ng-container *ngIf="currentpage>=pagecount">
+        <button class="roombutton" (click)="previousPage()">Previous</button>
+       </ng-container>
+     </div>
+     
+  </div>

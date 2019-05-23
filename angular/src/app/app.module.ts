@@ -14,6 +14,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProviderService } from 'src/app/services/provider.service';
 import {AuthInterceptor} from './AuthInterceptor';
 import { CourseComponent } from './components/course/course.component';
+import { RoomsComponent } from './components/rooms/rooms.component';
+import { Schedule1Component } from './components/schedule1/schedule1.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { CourseComponent } from './components/course/course.component';
     InfoComponent,
     AuthComponent,
     ClassComponent,
-    CourseComponent
+    CourseComponent,
+    RoomsComponent,
+    Schedule1Component
 
   ],
   imports: [
