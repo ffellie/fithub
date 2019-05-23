@@ -60,6 +60,17 @@ class StudentSerializer(serializers.ModelSerializer):
         model = Students
         fields = ('id', 'fname', 'sname')
 
+
+
+class TeacherSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    fname = serializers.CharField(required=True)
+    sname = serializers.CharField(required=True)
+
+    class Meta:
+        model = Students
+        fields = ('id', 'fname', 'sname')
+
 class LessonSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(required=True)

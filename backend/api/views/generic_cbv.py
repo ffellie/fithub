@@ -6,8 +6,8 @@ from datetime import datetime
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import filters
-from api.serializers import StudentSerializer, CourseSerializer, RoomsSerializer, RoomsSerializer2, LessonSerializer
-from api.models import Students, Course2, Course, Rooms, Rooms1, Lesson, Lesson2
+from api.serializers import StudentSerializer, CourseSerializer, RoomsSerializer, RoomsSerializer2, LessonSerializer, TeacherSerializer
+from api.models import Students, Course2, Course, Rooms, Rooms1, Lesson, Lesson2, Teacher
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 from api.filters import RoomFilter
 from django_filters.rest_framework import DjangoFilterBackend
@@ -42,6 +42,16 @@ class StudentsList(generics.ListCreateAPIView):
         serializer.save(created_by=self.request.user)
 
 
+class TeacherList(generics.ListCreateAPIView):
+    serializer_class = TeacherSerializer
+
+    def get_queryset(self):
+        return Teacher.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+
 class CoursesList(generics.ListCreateAPIView):
     serializer_class = CourseSerializer
 
@@ -52,6 +62,8 @@ class CoursesList(generics.ListCreateAPIView):
             raise Http404
         queryset = category.subjects1.all()
         return queryset
+
+
 
 class LessonList(generics.ListCreateAPIView):
     serializer_class = LessonSerializer

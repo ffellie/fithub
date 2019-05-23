@@ -15,6 +15,7 @@ export class Schedule1Component implements OnInit {
   public studentid: number;
   public courses2: Course[]=[];
   public item111: Course;
+  public notlist = true;
 
   constructor(private provider: ProviderService) { }
 
@@ -40,6 +41,13 @@ export class Schedule1Component implements OnInit {
       this.provider.getCourseLessons(course.id).then(res=>{
         this.tlessons = res;
       });
+    }
+
+    changeListing(){
+      if(this.notlist)
+      this.notlist = false;
+      else if(!this.notlist)
+      this.notlist = true;
     }
 
     getSutff(course: string){

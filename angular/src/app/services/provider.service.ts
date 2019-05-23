@@ -2,7 +2,7 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {MainService} from './main.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Course, IAuthResponse, IRealUser, IStudent, IRoom, IRoomPaginated, ILesson} from 'src/app/models/models';
+import {Course, IAuthResponse, IRealUser, IStudent, IRoom, IRoomPaginated, ILesson, ITeacher} from 'src/app/models/models';
 import { Observable } from 'rxjs';
 
 
@@ -101,6 +101,11 @@ export class ProviderService extends MainService {
 
   getStudents(): Promise<IStudent[]> {
     return this.get('http://localhost:8000/api/students/', {});
+  }
+
+  
+  getTeachers(): Promise<ITeacher[]> {
+    return this.get('http://localhost:8000/api/teachers/', {});
   }
 
   getStudentCourses(pk: number): Promise<Course[]>{

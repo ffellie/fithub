@@ -15,6 +15,7 @@ urlpatterns = [
     path('news/', NewsList.as_view()),
     path('login/', login),
     path('students/', views.StudentsList.as_view()),
+    path('teachers/', views.TeacherList.as_view()),
     path('users/<int:pk>/', views.UserViewSet.as_view({'get':'retrieve'})),
     path('studentcourses/<int:pk>/', views.CoursesList.as_view()),
     path('allcourses/', views.Courses2List.as_view()),

@@ -1,5 +1,8 @@
 <div class="main">
     <h2 style="color: white;">Lessons</h2>
+    <button class="bbuttons" (click)="changeListing()">List</button>
+    
+    <ng-container *ngIf="notlist">
     <ng-container *ngFor="let item of courses">
       <div style="color: white; font-size: 20px; background-color: #ff6f61; border-radius: 5px; border: 2px solid red; margin-top: 10px;">
       <a>
@@ -11,7 +14,34 @@
       </div>
        <!-- <li style="color: white;"> {{item.title}} - {{item.day}} - {{item.room}} - {{item.start_time}} - {{item.end_time}}</li> -->
     </ng-container>
-    <ul *ngFor="let item of tlessons">
-      <li style="color: white;"> {{item.title}} - {{item.info}} </li>
+    <ul id="llist" *ngFor="let item of tlessons">
+      <li style="color: white;"> Lesson :{{item.title}} <br>
+      Start date: {{item.start_time}}
+      <br>
+      End date: {{item.end_time}} 
+      <button class="bbuttons" (click)="addLesson(item)">Add</button>
+       </li>
     </ul>
+  </ng-container>
+  <ng-container *ngIf="!notlist">
+      <ng-container *ngFor="let item of courses">
+        <div style="color: white; font-size: 20px; background-color: #ff6f61; border-radius: 5px; border: 2px solid red; margin-top: 10px;">
+        <a>
+          Course title: {{item.name}}
+          <br>
+          Course description: {{item.description}} 
+          <button class="bbuttons"(click)="getSutff(item.name)">Show Lessons</button></a>
+        <br>
+        </div>
+         <!-- <li style="color: white;"> {{item.title}} - {{item.day}} - {{item.room}} - {{item.start_time}} - {{item.end_time}}</li> -->
+      </ng-container>
+      <ul id="llist" *ngFor="let item of slessons">
+        <li style="color: white;"> Lesson :{{item.title}} <br>
+        Start date: {{item.start_time}}
+        <br>
+        End date: {{item.end_time}} 
+        <button class="bbuttons" (click)="addLesson(item)">Add</button>
+         </li>
+      </ul>
+    </ng-container>
   </div>
